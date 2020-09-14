@@ -60,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsWon = [];
     let cardsLost = [];
     let attemptsRemaining = parseInt(document.getElementById('attempts').textContent);
+    const msgContainer = document.querySelector('.msg');
+    let correctMatchMsg = 'Correct Match!';
+    let wrongMatchMsg = 'Wrong! Try Again!';
+    let winMsg = 'Congratulations! You Won';
+    let lostMsg = 'You Lost! Better Memory Next Time!';
 
     const createBoard = () => {
         for (let i = 0; i < cardArr.length; i++) {
@@ -78,14 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoID = cardsChosenID[1];
 
         if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Your cards match!')
+            // alert('Your cards match!')
             cards[optionOneID].setAttribute('src', 'img/white.png');
             cards[optionTwoID].setAttribute('src', 'img/white.png');
             cardsWon.push(cardsChosen)
+            msgContainer.innerHTML = `<h3>${correctMatchMsg}</h3>`
         } else {
             cards[optionOneID].setAttribute('src', 'img/blank.png');
             cards[optionTwoID].setAttribute('src', 'img/blank.png');
-            alert('Sorry, you cards don\'t match!');
+            msgContainer.innerHTML = `<h3>${wrongMatchMsg}</h3>`
             cardsLost.push(cardsChosen);
             let lost = attemptsRemaining -= 1;
             document.getElementById('attempts').textContent = lost
@@ -102,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDisplay.textContent = cardsWon.length;
 
         if (cardsWon.length === (cardArr.length / 2)) {
-            resultDisplay.textContent = 'Congratulations! You matched all the cards!'
+            msgContainer.innerHTML = `<h2>${winMsg}</h2>`
             setTimeout(() => {
                 location.reload()
             }, 3000)

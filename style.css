@@ -15,12 +15,26 @@ body {
 }
 
 .grid img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
 }
 
 h3, #result {
-    font-size: 2rem;
+    font-size: 1.3rem;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border:4px dotted #000;
+    width: 34.5%;
+    margin-bottom: 20px;
+}
+
+.score h3 {
+    padding: 15px 30px;
+    margin: 10px 20px;
 }
 
 .container {
@@ -30,3 +44,6 @@ h3, #result {
     flex-direction: column;
 }
 
+.msg h3 {
+    font-size: 2rem;
+}
